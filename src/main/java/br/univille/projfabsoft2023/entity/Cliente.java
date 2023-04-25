@@ -1,13 +1,16 @@
-package br.univille.pfbgerenciadordetarefas.entity;
+package br.univille.projfabsoft2023.entity;
 
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.util.Date;
 
 @Entity
 public class Cliente {
@@ -22,9 +25,30 @@ public class Cliente {
     private String endereco;
     private String telefone;
     private String email;
+
+    //Associação MUITOS para UM
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    private Cidade cidade;
+
     
-    
-    
+    public String getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public long getId() {
         return id;
     }
@@ -43,23 +67,11 @@ public class Cliente {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    public String getEndereco() {
-        return endereco;
+    public Cidade getCidade() {
+        return cidade;
     }
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-    public String getTelefone() {
-        return telefone;
-    }
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
     
 }
