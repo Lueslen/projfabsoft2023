@@ -26,10 +26,34 @@
                         <td th:text="${umCliente.endereco}"></td>
                         <td th:text="${umCliente.telefone}"></td>
                         <td th:text="${umCliente.email}"></td>
+                        <td><a class="btn btn-secondary" th:href="@{'/cliente/alterar/' + ${umCliente.id}}"></a>
+                        <button class="btn btn-danger js-delete"
+                            th:data-id="${umCliente.id}">
+                        </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </main>
+
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Excluir Cliente</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Confirma exclusão do cliente?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                  <button type="button" class="btn btn-primary">Sim</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <div th:include="layout :: footer">(footer)</div>
     </body>
 </html>

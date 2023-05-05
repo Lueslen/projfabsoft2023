@@ -31,6 +31,12 @@ public class ClienteServiceImpl
         repository.save(cliente);
     }
 
+    @Override
+    public void delete(long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
     
     
 }
